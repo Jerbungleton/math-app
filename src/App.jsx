@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
-import PreAlgebraPage from './pages/PreAlgebraPage'; // New
+import PreAlgebraPage from './pages/Pre-AlgebraPage'; // New
 import AlgebraPage from './pages/AlgebraPage';     // New
 import PreCalculusPage from './pages/PreCalculusPage'; // New
 import CalculusPage from './pages/CalculusPage';   // New
