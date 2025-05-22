@@ -1,14 +1,14 @@
-import { NavLink } from 'react-router-dom'; // Import NavLink
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
-  const activeClassName = "text-music-primary font-semibold border-b-2 border-music-primary";
-  const inactiveClassName = "text-gray-300 hover:text-music-primary";
+  const activeClassName = "text-brand-primary font-semibold border-b-2 border-brand-primary"; // Use new colors
+  const inactiveClassName = "text-brand-dark hover:text-brand-primary"; // Use new colors
 
   return (
-    <nav className="bg-music-dark shadow-md sticky top-0 z-50">
+    <nav className="bg-white shadow-md sticky top-0 z-50"> {/* Adjusted background */}
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <NavLink to="/" className="text-xl font-bold text-white hover:text-music-primary">
-          RSPM
+        <NavLink to="/" className="text-xl font-bold text-brand-dark hover:text-brand-primary">
+          Math Helper {/* New Site Name */}
         </NavLink>
         <div className="space-x-4">
           <NavLink
@@ -18,16 +18,28 @@ export default function Navbar() {
             Home
           </NavLink>
           <NavLink
-            to="/music"
+            to="/pre-algebra"
             className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName} px-3 py-2 rounded-md text-sm font-medium`}
           >
-            Music
+            Pre-Algebra
           </NavLink>
           <NavLink
-            to="/store"
+            to="/algebra"
             className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName} px-3 py-2 rounded-md text-sm font-medium`}
           >
-            Store
+            Algebra
+          </NavLink>
+          <NavLink
+            to="/pre-calculus"
+            className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName} px-3 py-2 rounded-md text-sm font-medium`}
+          >
+            Pre-Calculus
+          </NavLink>
+          <NavLink
+            to="/calculus"
+            className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName} px-3 py-2 rounded-md text-sm font-medium`}
+          >
+            Calculus
           </NavLink>
           <NavLink
             to="/about"
@@ -35,12 +47,7 @@ export default function Navbar() {
           >
             About
           </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName} px-3 py-2 rounded-md text-sm font-medium`}
-          >
-            Contact
-          </NavLink>
+          {/* Contact link can be added if needed */}
         </div>
       </div>
     </nav>

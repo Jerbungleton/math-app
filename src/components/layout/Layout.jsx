@@ -1,20 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
-import Player from '../music/Player'; // Corrected path
+// Remove Player import
 
-export default function Layout({ tracks, currentTrackIndex, onTrackEnd, onSetCurrentTrackIndex, onPlayTrack }) {
+export default function Layout() { // Removed props related to music player
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-900">
+    <div className="flex flex-col min-h-screen bg-brand-light"> {/* Use new Tailwind colors */}
       <Navbar />
-      <main className="flex-grow pb-20"> {/* Add padding-bottom to avoid overlap with player */}
+      <main className="flex-grow container mx-auto px-4 py-8"> {/* Adjusted padding */}
         <Outlet />
       </main>
-      <Player 
-        tracks={tracks} 
-        currentTrackIndex={currentTrackIndex}
-        onTrackEnd={onTrackEnd}
-        onSetCurrentTrackIndex={onSetCurrentTrackIndex}
-      />
+      {/* Optional: Add a Footer component here */}
     </div>
   );
-}   
+}
