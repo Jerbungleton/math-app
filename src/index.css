@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    @apply font-sans leading-normal font-normal antialiased;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  }
+
+  a {
+    @apply font-medium no-underline;
+    color: #646cff;
+  }
+  
+  a:hover {
+    @apply transition-colors;
+    color: #535bf2;
+  }
+
+  body {
+    /* Keep your original base body styles and add the new ones */
+    @apply m-0 flex flex-col place-items-center min-w-[320px] min-h-screen bg-neutral-900; /* Ensure full background and flex column for layout */
+  }
+
+  h1 {
+    @apply text-5xl leading-tight;
+  }
+
+  button {
+    @apply rounded-lg border border-transparent px-5 py-2 text-base font-medium bg-[#1a1a1a] cursor-pointer transition-colors;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply rounded-lg border-transparent px-4 py-2 text-base font-medium;
+    transition: border-color 0.25s;
+  }
+  .btn-primary:hover {
+    @apply border-[#646cff];
+  }
+  .btn-primary:focus {
+    @apply outline-4 outline-auto -webkit-focus-ring-color;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
