@@ -1,24 +1,23 @@
 // src/pages/PreAlgebraPage.jsx 
-export default function PreAlgebraPage() { // Renamed component
+export default function PreAlgebraPage() {
   const topics = [
-    // Update with Pre-Algebra specific topics
-    { id: 1, title: "Basic Operations", path: "/pre-algebra/operations" },
-    { id: 2, title: "Fractions and Decimals", path: "/pre-algebra/fractions-decimals" },
-    { id: 3, title: "Ratios and Proportions", path: "/pre-algebra/ratios" },
+    { id: 1, title: "Basic Operations", path: "/pre-algebra/operations", desc: "Master addition, subtraction, multiplication, and division." },
+    { id: 2, title: "Fractions and Decimals", path: "/pre-algebra/fractions-decimals", desc: "Work confidently with fractions and decimals." },
+    { id: 3, title: "Ratios and Proportions", path: "/pre-algebra/ratios", desc: "Understand ratios and solve proportions." },
   ];
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold my-6 text-center text-brand-primary-dark">Pre-Algebra</h1> {/* */}
-      <p className="text-lg text-center text-brand-text-muted mb-8"> {/* */}
-        Explore various concepts in Pre-Algebra. Click on a topic to learn more.
-      </p>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {topics.map(topic => (
-          <div key={topic.id} className="content-card hover:shadow-xl transition-shadow"> {/* */}
-            <h2 className="text-2xl font-semibold text-brand-primary-dark mb-3">{topic.title}</h2> {/* */}
-            <a href={topic.path} className="text-brand-primary hover:underline"> {/* */}
-              Learn more &rarr;
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-8 text-brand-primary-dark text-center animate-fade-in">
+        Pre-Algebra
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {topics.map((topic, i) => (
+          <div key={topic.id} className="content-card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-brand-primary animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
+            <h2 className="text-2xl font-semibold mb-4 text-brand-primary-dark">{topic.title}</h2>
+            <p className="text-brand-text-muted leading-relaxed">{topic.desc}</p>
+            <a href={topic.path} className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300">
+              Learn More
             </a>
           </div>
         ))}
