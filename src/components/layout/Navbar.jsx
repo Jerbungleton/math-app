@@ -47,7 +47,6 @@ export default function Navbar() {
           >
             About
           </NavLink>
-          {/* Contact link can be added if needed */}
         </div>
       </div>
     </nav>
