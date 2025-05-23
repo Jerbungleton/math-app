@@ -8,7 +8,7 @@ export default function Navbar() {
     <nav className="bg-brand-surface shadow-md sticky top-0 z-50"> {/* */}
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <NavLink to="/" className="text-xl font-bold text-brand-primary-dark hover:text-opacity-80"> {/* */}
-          Math Helper
+          Mathimus
         </NavLink>
         <div className="space-x-4">
           <NavLink
