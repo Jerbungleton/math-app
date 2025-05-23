@@ -5,8 +5,8 @@ export default function Navbar() {
   const inactiveClassName = "text-brand-text-dark hover:text-brand-primary-dark"; //
 
   return (
-    <nav className="bg-brand-surface shadow-md sticky top-0 z-50"> {/* */}
-      <div className="w-full max-w-[1920px] mx-auto px-8 py-3 flex justify-between items-center">
+    <nav className="bg-brand-surface shadow-md sticky top-0 z-50 w-full"> {/* */}
+      <div className="w-full px-8 py-3 flex justify-between items-center">
         <NavLink to="/" className="text-xl font-bold text-brand-primary-dark hover:text-opacity-80"> {/* */}
           Mathimus
         </NavLink>
