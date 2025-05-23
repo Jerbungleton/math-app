@@ -5,24 +5,21 @@
 @layer base {
   :root {
     @apply font-sans leading-normal font-normal antialiased;
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    color-scheme: light; /* Assuming a light theme dominant with orange */
+    color: theme('colors.brand-text-dark'); /* */
+    background-color: theme('colors.brand-background'); /* */
   }
 
   a {
-    @apply font-medium no-underline;
-    color: #646cff;
+    @apply font-medium no-underline text-brand-primary; /* */
   }
   
   a:hover {
-    @apply transition-colors;
-    color: #535bf2;
+    @apply transition-colors text-brand-primary-dark; /* */
   }
 
   body {
-    /* Keep your original base body styles and add the new ones */
-    @apply m-0 flex flex-col place-items-center min-w-[320px] min-h-screen bg-neutral-900; /* Ensure full background and flex column for layout */
+    @apply m-0 flex flex-col place-items-center min-w-[320px] min-h-screen bg-brand-background; /* */
   }
 
   h1 {
@@ -30,32 +27,30 @@
   }
 
   button {
-    @apply rounded-lg border border-transparent px-5 py-2 text-base font-medium bg-[#1a1a1a] cursor-pointer transition-colors;
+    @apply rounded-lg border border-transparent px-5 py-2 text-base font-medium bg-brand-primary text-brand-text-light cursor-pointer transition-colors; /* */
+  }
+  button:hover {
+    @apply bg-brand-primary-dark; /* */
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply rounded-lg border-transparent px-4 py-2 text-base font-medium;
+    @apply rounded-lg border-transparent px-4 py-2 text-base font-medium bg-brand-primary text-brand-text-light; /* */
     transition: border-color 0.25s;
   }
   .btn-primary:hover {
-    @apply border-[#646cff];
+    @apply bg-brand-primary-dark; /* */
   }
   .btn-primary:focus {
-    @apply outline-4 outline-auto -webkit-focus-ring-color;
+    @apply outline-4 outline-auto ring-2 ring-brand-primary ring-offset-2; /* */
+  }
+
+  /* Added card style for consistent look */
+  .content-card {
+    @apply bg-brand-surface p-6 rounded-lg shadow-lg; /* */
   }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Remove dark mode specific styles if not desired for this orange theme */
+/* @media (prefers-color-scheme: light) { ... } */

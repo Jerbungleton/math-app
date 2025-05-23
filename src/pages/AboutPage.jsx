@@ -1,8 +1,8 @@
 export default function AboutPage() {
   return (
-    <div className="container mx-auto p-8 text-white">
-      <h1 className="text-4xl font-bold mb-6 text-center">sup dawg</h1>
-      <div className="bg-neutral-800 p-6 rounded-lg shadow-lg">
+    <div className="container mx-auto p-8">
+      <h1 className="text-4xl font-bold mb-6 text-center text-brand-primary-dark">sup dawg</h1> {/* */}
+      <div className="content-card text-brand-text-dark"> {/* */}
         <p className="mb-4 text-lg">
           Filler Text 
           Filler Text].
@@ -12,7 +12,7 @@ export default function AboutPage() {
           Filler Text
         </p>
         <p className="text-lg">
-          Music
+          Music {/* Consider changing this if the site is no longer about music */}
         </p>
         <p className="mt-6 text-lg">
           Filler

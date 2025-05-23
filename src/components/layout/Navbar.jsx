@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
-  const activeClassName = "text-brand-primary font-semibold border-b-2 border-brand-primary"; // Use new colors
-  const inactiveClassName = "text-brand-dark hover:text-brand-primary"; // Use new colors
+  const activeClassName = "text-brand-primary-dark font-semibold border-b-2 border-brand-primary-dark"; //
+  const inactiveClassName = "text-brand-text-dark hover:text-brand-primary-dark"; //
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50"> {/* Adjusted background */}
+    <nav className="bg-brand-surface shadow-md sticky top-0 z-50"> {/* */}
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <NavLink to="/" className="text-xl font-bold text-brand-dark hover:text-brand-primary">
-          Math Helper {/* New Site Name */}
+        <NavLink to="/" className="text-xl font-bold text-brand-primary-dark hover:text-opacity-80"> {/* */}
+          Math Helper
         </NavLink>
         <div className="space-x-4">
           <NavLink

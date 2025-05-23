@@ -1,15 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
-// Remove Player import
 
-export default function Layout() { // Removed props related to music player
+export default function Layout() {
   return (
-    <div className="flex flex-col min-h-screen bg-brand-light"> {/* Use new Tailwind colors */}
+    <div className="flex flex-col min-h-screen bg-brand-background"> {/* */}
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-8"> {/* Adjusted padding */}
+      <main className="flex-grow container mx-auto px-4 py-8">
         <Outlet />
       </main>
-      {/* Optional: Add a Footer component here */}
+      {/* Optional: Add a Footer component here, styled with new brand colors */}
     </div>
   );
 }
