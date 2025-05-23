@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { generateProblem, generateQuiz } from '../../utils/mathProblemGenerator';
 import { defaultFlashcards } from '../../utils/defaultFlashcards';
-console.log('Imported defaultFlashcards:', defaultFlashcards);
-
 import {
   loadFlashcardSets,
   saveFlashcardSets,
@@ -38,49 +36,33 @@ export default function BasicOperationsPage() {
 
   // Flashcard states
   const [showFlashcard, setShowFlashcard] = useState(false);
-  const [currentFlashcard, setCurrentFlashcard] = useState(0);  const [flashcardMode, setFlashcardMode] = useState('premade');
-  const [activeFlashcards, setActiveFlashcards] = useState(() => {
-    console.log('Setting initial activeFlashcards:', defaultFlashcards);
-    return defaultFlashcards;
-  });
+  const [currentFlashcard, setCurrentFlashcard] = useState(0);
+  const [flashcardMode, setFlashcardMode] = useState('premade');
+  const [activeFlashcards, setActiveFlashcards] = useState([...defaultFlashcards]);
   const [showAddCard, setShowAddCard] = useState(false);
   const [newCardFront, setNewCardFront] = useState('');
   const [newCardBack, setNewCardBack] = useState('');
   const [editingCard, setEditingCard] = useState(null);
-  const [flashcardSets, setFlashcardSets] = useState(() => {
-    console.log('Setting initial flashcardSets with Default Set:', defaultFlashcards);
-    return { 'Default Set': defaultFlashcards };
-  });
+  const [flashcardSets, setFlashcardSets] = useState({ 'Default Set': [...defaultFlashcards] });
   const [currentSet, setCurrentSet] = useState('Default Set');
   const [showAddSet, setShowAddSet] = useState(false);
   const [newSetName, setNewSetName] = useState('');
   const [reviewMode, setReviewMode] = useState('sequential');
   const [slideDirection, setSlideDirection] = useState(null);
 
-  useEffect(() => {
-    console.log('Default flashcards:', defaultFlashcards);
-  }, []);
-
   // Load flashcard sets from localStorage on mount
   useEffect(() => {
     const savedSets = loadFlashcardSets();
-    console.log('Loaded saved sets:', savedSets);
     if (Object.keys(savedSets).length > 0) {
-      setFlashcardSets(prev => {
-        console.log('Updating flashcard sets:', { ...prev, ...savedSets });
-        return { ...prev, ...savedSets };
-      });
+      setFlashcardSets(prev => ({ ...prev, ...savedSets }));
     }
   }, []);
 
   // Update active flashcards when mode or set changes
   useEffect(() => {
     console.log('Mode changed to:', flashcardMode);
-    console.log('Current set:', currentSet);
-    console.log('Available sets:', flashcardSets);
-    
     const cards = flashcardMode === 'premade' ? defaultFlashcards : (flashcardSets[currentSet] || []);
-    console.log('Setting active cards:', cards);
+    console.log('Setting cards:', cards);
     setActiveFlashcards(cards);
     setCurrentFlashcard(0);
     setShowFlashcard(false);
@@ -139,10 +121,10 @@ export default function BasicOperationsPage() {
 
   const handleNextCard = () => {
     if (!activeFlashcards || activeFlashcards.length === 0) return;
-    const nextIndex = getNextCard(activeFlashcards, reviewMode, currentFlashcard);
-    setCurrentFlashcard(nextIndex);
     setSlideDirection('right');
+    const nextIndex = getNextCard(activeFlashcards, reviewMode, currentFlashcard);
     setTimeout(() => {
+      setCurrentFlashcard(nextIndex);
       setShowFlashcard(false);
       setSlideDirection(null);
     }, 300);
@@ -150,10 +132,10 @@ export default function BasicOperationsPage() {
 
   const handlePrevCard = () => {
     if (!activeFlashcards || activeFlashcards.length === 0) return;
-    const prevIndex = currentFlashcard === 0 ? activeFlashcards.length - 1 : currentFlashcard - 1;
-    setCurrentFlashcard(prevIndex);
     setSlideDirection('left');
+    const prevIndex = currentFlashcard === 0 ? activeFlashcards.length - 1 : currentFlashcard - 1;
     setTimeout(() => {
+      setCurrentFlashcard(prevIndex);
       setShowFlashcard(false);
       setSlideDirection(null);
     }, 300);
@@ -311,108 +293,32 @@ export default function BasicOperationsPage() {
       {/* Flashcards content */}
       {activeTab === 'flashcards' && (
         <div className="content-card max-w-4xl mx-auto">
-          {/* Step 1: Mode selection */}
-          {!flashcardMode && (
-            <div className="mb-6">
-              <h2 className="text-2xl font-semibold mb-4 text-center text-brand-primary-dark">Choose Your Flashcards</h2>
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={() => {
-                    setFlashcardMode('premade');
-                    setReviewMode('sequential');
-                    setShowFlashcard(false);
-                  }}
-                  className="px-8 py-4 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300"
-                >
-                  Pre-made Cards
-                </button>
-                <button
-                  onClick={() => {
-                    setFlashcardMode('custom');
-                    setShowFlashcard(false);
-                  }}
-                  className="px-8 py-4 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300"
-                >
-                  My Flashcards
-                </button>
-              </div>
-            </div>
-          )}
+          {/* Mode selection */}
+          <div className="mb-6 flex justify-center gap-4">
+            <button
+              onClick={() => setFlashcardMode('premade')}
+              className={`px-6 py-2 rounded-lg transition-colors duration-300 ${
+                flashcardMode === 'premade'
+                  ? 'bg-brand-primary text-brand-text-light'
+                  : 'bg-brand-surface text-brand-text-dark'
+              }`}
+            >
+              Pre-made Cards
+            </button>
+            <button
+              onClick={() => setFlashcardMode('custom')}
+              className={`px-6 py-2 rounded-lg transition-colors duration-300 ${
+                flashcardMode === 'custom'
+                  ? 'bg-brand-primary text-brand-text-light'
+                  : 'bg-brand-surface text-brand-text-dark'
+              }`}
+            >
+              My Flashcards
+            </button>
+          </div>
 
-          {/* Step 2: Custom flashcard management */}
-          {flashcardMode === 'custom' && !reviewMode && (
-            <div className="mb-6">
-              <h2 className="text-2xl font-semibold mb-4 text-center text-brand-primary-dark">Manage Your Flashcards</h2>
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={() => {
-                    setReviewMode('sequential');
-                    setShowFlashcard(false);
-                  }}
-                  className="px-8 py-4 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300"
-                >
-                  View Existing Sets
-                </button>
-                <button
-                  onClick={() => setShowAddSet(true)}
-                  className="px-8 py-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300"
-                >
-                  Create New Set
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Review mode selection */}
-          {flashcardMode && reviewMode && (
-            <div className="mb-6">
-              <h2 className="text-2xl font-semibold mb-4 text-center text-brand-primary-dark">Choose Review Mode</h2>
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={() => {
-                    setReviewMode('sequential');
-                    setShowFlashcard(false);
-                  }}
-                  className={`px-6 py-3 rounded-lg transition-colors duration-300 ${
-                    reviewMode === 'sequential'
-                      ? 'bg-brand-primary text-brand-text-light'
-                      : 'bg-brand-surface text-brand-text-dark'
-                  }`}
-                >
-                  Sequential
-                </button>
-                <button
-                  onClick={() => {
-                    setReviewMode('random');
-                    setShowFlashcard(false);
-                  }}
-                  className={`px-6 py-3 rounded-lg transition-colors duration-300 ${
-                    reviewMode === 'random'
-                      ? 'bg-brand-primary text-brand-text-light'
-                      : 'bg-brand-surface text-brand-text-dark'
-                  }`}
-                >
-                  Random
-                </button>
-                <button
-                  onClick={() => {
-                    setReviewMode('confidence');
-                    setShowFlashcard(false);
-                  }}
-                  className={`px-6 py-3 rounded-lg transition-colors duration-300 ${
-                    reviewMode === 'confidence'
-                      ? 'bg-brand-primary text-brand-text-light'
-                      : 'bg-brand-surface text-brand-text-dark'
-                  }`}
-                >
-                  Focus on Weak Cards
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Custom mode UI - only show when viewing existing sets */}
-          {flashcardMode === 'custom' && reviewMode && !showFlashcard && (
+          {/* Custom mode UI */}
+          {flashcardMode === 'custom' && (
             <div className="mb-6 space-y-4">
               {/* Set management */}
               <div className="flex gap-4 items-center justify-center">
@@ -445,6 +351,36 @@ export default function BasicOperationsPage() {
                 )}
               </div>
 
+              {/* New set dialog */}
+              {showAddSet && (
+                <div className="mb-4 p-4 bg-white rounded-lg shadow-md">
+                  <input
+                    type="text"
+                    value={newSetName}
+                    onChange={(e) => setNewSetName(e.target.value)}
+                    placeholder="Enter set name"
+                    className="w-full px-3 py-2 mb-2 border border-brand-secondary rounded-lg focus:ring-2 focus:ring-brand-primary"
+                  />
+                  <div className="flex gap-2 justify-end">
+                    <button
+                      onClick={handleCreateSet}
+                      className="px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark"
+                    >
+                      Create Set
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowAddSet(false);
+                        setNewSetName('');
+                      }}
+                      className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+
               {/* Add card button */}
               <div className="flex justify-center">
                 <button
@@ -457,37 +393,6 @@ export default function BasicOperationsPage() {
                   className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300"
                 >
                   Create New Flashcard
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* New set dialog */}
-          {showAddSet && (
-            <div className="mb-4 p-4 bg-white rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4 text-brand-primary-dark">Create New Set</h3>
-              <input
-                type="text"
-                value={newSetName}
-                onChange={(e) => setNewSetName(e.target.value)}
-                placeholder="Enter set name"
-                className="w-full px-3 py-2 mb-2 border border-brand-secondary rounded-lg focus:ring-2 focus:ring-brand-primary"
-              />
-              <div className="flex gap-2 justify-end">
-                <button
-                  onClick={handleCreateSet}
-                  className="px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark"
-                >
-                  Create Set
-                </button>
-                <button
-                  onClick={() => {
-                    setShowAddSet(false);
-                    setNewSetName('');
-                  }}
-                  className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
-                >
-                  Cancel
                 </button>
               </div>
             </div>
@@ -545,10 +450,44 @@ export default function BasicOperationsPage() {
             </div>
           )}
 
-          {/* Flashcard display - only show after all selections are made */}
-          {flashcardMode && reviewMode && activeFlashcards?.length > 0 && !showAddCard && !showAddSet && (
+          {/* Flashcard display */}
+          {activeFlashcards?.length > 0 ? (
             <>
               <div className="mb-4">
+                {/* Review mode selection */}
+                <div className="flex justify-center gap-4 mb-4">
+                  <button
+                    onClick={() => setReviewMode('sequential')}
+                    className={`px-4 py-2 rounded-lg ${
+                      reviewMode === 'sequential'
+                        ? 'bg-brand-primary text-brand-text-light'
+                        : 'bg-brand-surface text-brand-text-dark'
+                    }`}
+                  >
+                    Sequential
+                  </button>
+                  <button
+                    onClick={() => setReviewMode('random')}
+                    className={`px-4 py-2 rounded-lg ${
+                      reviewMode === 'random'
+                        ? 'bg-brand-primary text-brand-text-light'
+                        : 'bg-brand-surface text-brand-text-dark'
+                    }`}
+                  >
+                    Random
+                  </button>
+                  <button
+                    onClick={() => setReviewMode('confidence')}
+                    className={`px-4 py-2 rounded-lg ${
+                      reviewMode === 'confidence'
+                        ? 'bg-brand-primary text-brand-text-light'
+                        : 'bg-brand-surface text-brand-text-dark'
+                    }`}
+                  >
+                    Focus on Weak Cards
+                  </button>
+                </div>
+
                 {/* Flashcard */}
                 <div className="flashcard-container">
                   <div 
@@ -616,7 +555,7 @@ export default function BasicOperationsPage() {
                 </button>
               </div>
 
-              {/* Card management buttons - only show in custom mode */}
+              {/* Card management buttons */}
               {flashcardMode === 'custom' && (
                 <div className="mt-4 flex justify-center gap-4">
                   <button
@@ -634,10 +573,7 @@ export default function BasicOperationsPage() {
                 </div>
               )}
             </>
-          )}
-
-          {/* Empty state for custom mode */}
-          {flashcardMode === 'custom' && reviewMode && (!activeFlashcards || activeFlashcards.length === 0) && !showAddCard && !showAddSet && (
+          ) : flashcardMode === 'custom' ? (
             <div className="text-center text-brand-text-dark py-8">
               <p className="mb-4">You haven't created any flashcards yet!</p>
               <button
@@ -647,7 +583,7 @@ export default function BasicOperationsPage() {
                 Create Your First Flashcard
               </button>
             </div>
-          )}
+          ) : null}
         </div>
       )}
     </div>
