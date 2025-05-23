@@ -1,29 +1,44 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
-import PreAlgebraPage from './pages/Pre-AlgebraPage'; // New
-import AlgebraPage from './pages/AlgebraPage';     // New
-import PreCalculusPage from './pages/PreCalculusPage'; // New
-import CalculusPage from './pages/CalculusPage';   // New
+import PreAlgebraPage from './pages/Pre-AlgebraPage';
+import AlgebraPage from './pages/AlgebraPage';
+import PreCalculusPage from './pages/PreCalculusPage';
+import CalculusPage from './pages/CalculusPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-// Remove music-specific imports like musicData, audio files
+import NotFound from './pages/NotFound';
+
+// Import Pre-Algebra sub-pages
+import BasicOperationsPage from './pages/pre-algebra/BasicOperationsPage';
+import FractionsDecimalsPage from './pages/pre-algebra/FractionsDecimalsPage';
+import RatiosPage from './pages/pre-algebra/RatiosPage';
 
 function App() {
-  // Remove states like tracks, currentTrackIndex, cart, isLoading related to music
-  // You might add new states relevant to user progress or settings later
-
   return (
     <Routes>
-      <Route path="/" element={<Layout />}> {/* Layout doesn't need music player props anymore */}
+      <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="pre-algebra" element={<PreAlgebraPage />} />
+        
+        {/* Pre-Algebra Routes */}
+        <Route path="pre-algebra">
+          <Route index element={<PreAlgebraPage />} />
+          <Route path="operations" element={<BasicOperationsPage />} />
+          <Route path="fractions-decimals" element={<FractionsDecimalsPage />} />
+          <Route path="ratios" element={<RatiosPage />} />
+        </Route>
+
+        {/* Other Subject Routes */}
         <Route path="algebra" element={<AlgebraPage />} />
         <Route path="pre-calculus" element={<PreCalculusPage />} />
         <Route path="calculus" element={<CalculusPage />} />
+        
+        {/* General Routes */}
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
-        {/* Add a 404 Not Found route if desired */}
+        
+        {/* 404 Route */}
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

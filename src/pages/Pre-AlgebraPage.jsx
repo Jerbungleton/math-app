@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 // src/pages/PreAlgebraPage.jsx 
 export default function PreAlgebraPage() {
   const topics = [
@@ -16,9 +18,12 @@ export default function PreAlgebraPage() {
           <div key={topic.id} className="content-card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-brand-primary animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
             <h2 className="text-2xl font-semibold mb-4 text-brand-primary-dark">{topic.title}</h2>
             <p className="text-brand-text-muted leading-relaxed">{topic.desc}</p>
-            <a href={topic.path} className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300">
+            <Link 
+              to={topic.path} 
+              className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300"
+            >
               Learn More
-            </a>
+            </Link>
           </div>
         ))}
       </div>
