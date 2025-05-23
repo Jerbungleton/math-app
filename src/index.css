@@ -43,7 +43,10 @@
     @apply bg-brand-primary-dark; /* */
   }
   .btn-primary:focus {
-    @apply outline-4 outline-auto ring-2 ring-brand-primary ring-offset-2; /* */
+    /* Removed outline-auto as it's not a standard Tailwind class */
+    /* If you need a specific outline style, use classes like outline-solid, outline-dotted, etc. */
+    /* Or rely on the ring utilities which are already quite effective for focus. */
+    @apply outline-4 ring-2 ring-brand-primary ring-offset-2; /* */
   }
 
   /* Added card style for consistent look */
