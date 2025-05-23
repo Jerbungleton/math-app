@@ -6,7 +6,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-brand-surface shadow-md sticky top-0 z-50"> {/* */}
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+      <div className="w-full max-w-[1920px] mx-auto px-8 py-3 flex justify-between items-center">
         <NavLink to="/" className="text-xl font-bold text-brand-primary-dark hover:text-opacity-80"> {/* */}
           Mathimus
         </NavLink>
