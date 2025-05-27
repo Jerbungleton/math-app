@@ -515,23 +515,21 @@ export default function BasicOperationsPage() {
             </div>
 
             {!showPracticeAnswer ? ( //
-              <div className="space-y-4"> {/* */}
-                <button
+              <div className="space-y-4"> {/* */}                <button
                   onClick={handlePracticeAnswer} //
-                  className="w-full px-6 py-3 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark transition-colors" //
+                  className="w-full px-6 py-3 bg-brand-primary text-white rounded-lg" //
                 >
                   Check Answer
                 </button>
-                <div className="flex gap-4"> {/* */}
-                  <button
+                <div className="flex gap-4"> {/* */}                  <button
                     onClick={() => setShowHint(!showHint)}
-                    className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                    className="text-sm border border-brand-primary rounded-lg px-3 py-1 transition-all text-white hover:bg-brand-primary-dark"
                   >
                     {showHint ? 'Hide Hint' : 'Show Hint'}
                   </button>
                   <button
                     onClick={() => setShowSolution(!showSolution)}
-                    className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                    className="text-sm border border-brand-primary rounded-lg px-3 py-1 transition-all text-white hover:bg-brand-primary-dark"
                   >
                     {showSolution ? 'Hide Solution' : 'Show Solution'}
                   </button>
@@ -1191,10 +1189,9 @@ export default function BasicOperationsPage() {
                       className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-brand-primary" //
                       value={userAnswer1} //
                       onChange={(e) => setUserAnswer1(e.target.value)} //
-                    />
-                    <button
-                      onClick={() => checkAnswer(1, 16)} //
-                      className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark" //
+                    />                    <button
+                      onClick={() => checkAnswer(1, 16)}
+                      className="px-4 py-2 bg-brand-primary text-white rounded-lg"
                     >
                       Check Answer
                     </button>
@@ -1217,14 +1214,12 @@ export default function BasicOperationsPage() {
                   )}
                   <div className="flex gap-4"> {/* */}
                     <button
-                      onClick={() => setShowHint1(!showHint1)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowHint1(!showHint1)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showHint1 ? 'Hide Hint' : 'Show Hint'}
                     </button>
                     <button
-                      onClick={() => setShowSolution1(!showSolution1)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowSolution1(!showSolution1)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showSolution1 ? 'Hide Solution' : 'Show Solution'}
                     </button>
@@ -1244,10 +1239,9 @@ export default function BasicOperationsPage() {
                       className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-brand-primary" //
                       value={userAnswer2} //
                       onChange={(e) => setUserAnswer2(e.target.value)} //
-                    />
-                    <button
+                    />                    <button
                       onClick={() => checkAnswer(2, 7)} //
-                      className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark" //
+                      className="px-4 py-2 bg-brand-primary text-white rounded-lg" //
                     >
                       Check Answer
                     </button>
@@ -1270,14 +1264,12 @@ export default function BasicOperationsPage() {
                   )}
                   <div className="flex gap-4"> {/* */}
                     <button
-                      onClick={() => setShowHint2(!showHint2)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowHint2(!showHint2)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showHint2 ? 'Hide Hint' : 'Show Hint'}
                     </button>
                     <button
-                      onClick={() => setShowSolution2(!showSolution2)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowSolution2(!showSolution2)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showSolution2 ? 'Hide Solution' : 'Show Solution'}
                     </button>
@@ -1297,10 +1289,9 @@ export default function BasicOperationsPage() {
                       className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-brand-primary" //
                       value={userAnswer3} //
                       onChange={(e) => setUserAnswer3(e.target.value)} //
-                    />
-                    <button
+                    />                    <button
                       onClick={() => checkAnswer(3, 15)} //
-                      className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark" //
+                      className="px-4 py-2 bg-brand-primary text-white rounded-lg" //
                     >
                       Check Answer
                     </button>
@@ -1322,14 +1313,12 @@ export default function BasicOperationsPage() {
                   )}
                   <div className="flex gap-4"> {/* */}
                     <button
-                      onClick={() => setShowHint3(!showHint3)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowHint3(!showHint3)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showHint3 ? 'Hide Hint' : 'Show Hint'}
                     </button>
                     <button
-                      onClick={() => setShowSolution3(!showSolution3)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowSolution3(!showSolution3)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showSolution3 ? 'Hide Solution' : 'Show Solution'}
                     </button>
@@ -1349,10 +1338,9 @@ export default function BasicOperationsPage() {
                       className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-brand-primary" //
                       value={userAnswer4} //
                       onChange={(e) => setUserAnswer4(e.target.value)} //
-                    />
-                    <button
+                    />                    <button
                       onClick={() => checkAnswer(4, 6)} //
-                      className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark" //
+                      className="px-4 py-2 bg-brand-primary text-white rounded-lg" //
                     >
                       Check Answer
                     </button>
@@ -1375,14 +1363,12 @@ export default function BasicOperationsPage() {
                   )}
                   <div className="flex gap-4"> {/* */}
                     <button
-                      onClick={() => setShowHint4(!showHint4)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowHint4(!showHint4)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showHint4 ? 'Hide Hint' : 'Show Hint'}
                     </button>
                     <button
-                      onClick={() => setShowSolution4(!showSolution4)} //
-                      className="text-sm text-brand-primary hover:text-brand-primary-dark" //
+                      onClick={() => setShowSolution4(!showSolution4)} //                      className="text-sm text-brand-primary border border-brand-primary rounded-lg px-3 py-1 transition-all" //
                     >
                       {showSolution4 ? 'Hide Solution' : 'Show Solution'}
                     </button>

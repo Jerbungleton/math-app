@@ -3,11 +3,40 @@
 @tailwind utilities;
 
 @layer base {
+  /* Set default light mode for all devices */
   :root {
     @apply font-sans leading-normal font-normal antialiased;
-    color-scheme: light; /* Assuming a light theme dominant with orange */
-    color: theme('colors.brand-text-dark'); /* */
-    background-color: theme('colors.brand-background'); /* */
+    color-scheme: light !important;
+    forced-color-adjust: none !important;
+    -webkit-forced-color-adjust: none !important;
+  }
+
+  /* Base styles that apply to all elements */
+  html, body {
+    @apply bg-brand-background text-brand-text-dark;
+    color-scheme: light !important;
+    forced-color-adjust: none !important;
+    -webkit-forced-color-adjust: none !important;
+  }
+
+  /* Override dark mode preferences */
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      @apply bg-brand-background text-brand-text-dark;
+      color-scheme: light !important;
+      forced-color-adjust: none !important;
+      -webkit-forced-color-adjust: none !important;
+    }
+  }
+
+  /* Mobile-specific overrides */
+  @media screen and (max-width: 768px) {
+    html, body {
+      @apply bg-brand-background text-brand-text-dark;
+      color-scheme: light !important;
+      forced-color-adjust: none !important;
+      -webkit-forced-color-adjust: none !important;
+    }
   }
 
   a {

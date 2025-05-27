@@ -1,0 +1,11 @@
+/* Force light mode even when system prefers dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light !important;
+  }
+  
+  html, body {
+    background-color: #FFF3E0 !important; /* brand-background */
+    color: #424242 !important; /* brand-text-dark */
+  }
+}

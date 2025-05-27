@@ -1,0 +1,27 @@
+/* Force light mode for all devices and contexts */
+:root {
+  color-scheme: light !important;
+}
+
+html {
+  background-color: #FFF3E0 !important;
+  color: #424242 !important;
+}
+
+body {
+  background-color: #FFF3E0 !important;
+  color: #424242 !important;
+}
+
+/* Override dark mode */
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #FFF3E0 !important;
+    color: #424242 !important;
+  }
+  
+  body {
+    background-color: #FFF3E0 !important;
+    color: #424242 !important;
+  }
+}

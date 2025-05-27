@@ -12,7 +12,7 @@ export default function HomePage() {
           <p className="text-brand-text-muted leading-relaxed">
             Master the fundamentals.
           </p>
-          <Link to="/pre-algebra" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300">
+          <Link to="/pre-algebra" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg transition-colors duration-300">
             Explore
           </Link>
         </div>
@@ -21,7 +21,7 @@ export default function HomePage() {
           <p className="text-brand-text-muted leading-relaxed">
             Solve equations with confidence.
           </p>
-          <Link to="/algebra" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300">
+          <Link to="/algebra" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg transition-colors duration-300">
             Explore
           </Link>
         </div>
@@ -30,7 +30,7 @@ export default function HomePage() {
           <p className="text-brand-text-muted leading-relaxed">
             Prepare for advanced math.
           </p>
-          <Link to="/pre-calculus" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300">
+          <Link to="/pre-calculus" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg transition-colors duration-300">
             Explore
           </Link>
         </div>
@@ -39,7 +39,7 @@ export default function HomePage() {
           <p className="text-brand-text-muted leading-relaxed">
             Understand derivatives and integrals.
           </p>
-          <Link to="/calculus" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg hover:bg-brand-primary-dark transition-colors duration-300">
+          <Link to="/calculus" className="mt-4 inline-block px-4 py-2 bg-brand-primary text-brand-text-light rounded-lg transition-colors duration-300">
             Explore
           </Link>
         </div>
